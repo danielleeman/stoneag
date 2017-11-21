@@ -12,6 +12,11 @@
                 var map;
                 function loadMapScenario() {
                     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+
+                    var polygon = new Microsoft.Maps.Polygon([new Microsoft.Maps.Location(center.latitude - 0.05, center.longitude - 0.05),
+                      new Microsoft.Maps.Location(center.latitude + 0.01, center.longitude - 0.05),
+                      new Microsoft.Maps.Location(center.latitude + 0.01, center.longitude + 0.05)], null);
+                    map.entities.push(polygon);
                 }
 
 
