@@ -11,16 +11,26 @@
         <script type='text/javascript'>
                 var map;
                 function loadMapScenario() {
-                    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
                     var fieldGeo = [[46.65326757894689, -96.42025035713709],[46.652448813710876, -96.42023384116604],[46.65244575870562, -96.42093202940694],[46.653262927370356, -96.42127000481528]];
-                    var center = map.getCenter();
+                    // var centerLat = 0;
+                    // var centerLong = 0;
                     var polyPoints = [];
                     for (i = 0; i < fieldGeo.length; i++) {
-                      var polyPoint = new Microsoft.Maps.Location(fieldGeo[i][0], fieldGeo[i][1]);
-                      console.log(fieldGeo[i][0], fieldGeo[i][1])
+                      var latitude = fieldGeo[i][0];
+                      var longitude = fieldGeo[i][1];
+                      var polyPoint = new Microsoft.Maps.Location(latitude,longitude);
                       polyPoints.push(polyPoint);
+                      // centerLat += latitude;
+                      // centerLong += longitude;
                     }
                     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
+                    // centerLat = centerLat / fieldGeo.length;
+                    // centerLong = centerLong / fieldGeo.length;
+                    var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
+                    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                      center : geoCenter.center,
+                      zoom : 15
+                    });
                     map.entities.push(polygon);
                 }
 
