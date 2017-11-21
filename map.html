@@ -13,9 +13,11 @@
                 function loadMapScenario() {
                     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
                     var center = map.getCenter();
-                    var polygon = new Microsoft.Maps.Polygon([new Microsoft.Maps.Location(center.latitude - 0.05, center.longitude - 0.05),
-                      new Microsoft.Maps.Location(center.latitude + 0.01, center.longitude - 0.05),
-                      new Microsoft.Maps.Location(center.latitude + 0.01, center.longitude + 0.05)], null);
+                    var polygon = new Microsoft.Maps.Polygon([
+                      new Microsoft.Maps.Location(46.65326757894689, -96.42025035713709),
+                      new Microsoft.Maps.Location(46.652448813710876, -96.42023384116604),
+                      new Microsoft.Maps.Location(46.65244575870562, -96.42093202940694),
+                      new Microsoft.Maps.Location(46.653262927370356, -96.42127000481528)], null);
                     map.entities.push(polygon);
                 }
 
