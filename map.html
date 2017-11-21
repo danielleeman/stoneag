@@ -15,7 +15,7 @@
                     var fieldGeo = [[46.65326757894689, -96.42025035713709],[46.652448813710876, -96.42023384116604],[46.65244575870562, -96.42093202940694],[46.653262927370356, -96.42127000481528]];
                     var center = map.getCenter();
                     var polyPoints = [];
-                    for (var i = 0; i < fieldGeo; i++) {
+                    for (i = 0; i < fieldGeo; i++) {
                       var polyPoint = new Microsoft.Maps.Location(fieldGeo[i][0], fieldGeo[i][1]);
                       console.log(fieldGeo[i][0], fieldGeo[i][1])
                       polyPoints.append(polyPoint);
