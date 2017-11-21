@@ -18,7 +18,7 @@
                     for (i = 0; i < fieldGeo; i++) {
                       var polyPoint = new Microsoft.Maps.Location(fieldGeo[i][0], fieldGeo[i][1]);
                       console.log(fieldGeo[i][0], fieldGeo[i][1])
-                      polyPoints.append(polyPoint);
+                      polyPoints.push(polyPoint);
                     }
                     var polygon = new Microsoft.Maps.Polygon([], null);
                     map.entities.push(polygon);
