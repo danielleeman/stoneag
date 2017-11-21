@@ -20,7 +20,7 @@
                       console.log(fieldGeo[i][0], fieldGeo[i][1])
                       polyPoints.push(polyPoint);
                     }
-                    var polygon = new Microsoft.Maps.Polygon([], null);
+                    var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
                     map.entities.push(polygon);
                 }
 
