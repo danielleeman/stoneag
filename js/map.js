@@ -17,6 +17,7 @@ function loadMapScenario() {
     var razor = getRazorData();
     for (i = 0; i < assetPins.length; i+=1) {
       map.entities.push(assetPins[i]);
+      console.log("Pin");
     }
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
