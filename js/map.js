@@ -1,5 +1,6 @@
 var map;
 var baseUrl = 'https://razortracking.net'
+var assetPins = [];
 
 function loadMapScenario() {
     // Coordinates will need to come from the field record in Dynamics
@@ -13,7 +14,6 @@ function loadMapScenario() {
     }
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
-    var assetPins = [];
     var razor = getRazorData();
     for (i = 0; i < assetPins.length; i+=1) {
       map.entities.push(assetPins[i]);
