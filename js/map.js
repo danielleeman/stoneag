@@ -14,14 +14,14 @@ function loadMapScenario() {
 
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
-    var razor = getRazorData()
+    var razor = getRazorData();
+    var weather = loadWeather();
 
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
       zoom : 18
     });
 
-    //Basic sample pin <-this works
     var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
     map.entities.push(pushpin);
 
@@ -104,4 +104,19 @@ function getCurrentPosition(token) {
       console.log(response);
     }
   });
+}
+
+function loadWeather(){
+  // tile url from Iowa Environmental Mesonet of Iowa State University
+  var urlTemplate = 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-{timestamp}/{zoom}/{x}/{y}.png';
+  var timestamps = ['900913-m50m', '900913-m45m', '900913-m40m', '900913-m35m', '900913-m30m', '900913-m25m', '900913-m20m', '900913-m15m', '900913-m10m', '900913-m05m', '900913'];
+  var tileSources = [];
+  for (var i = 0; i < timestamps.length; i++) {
+      var tileSource = new Microsoft.Maps.TileSource({
+          uriConstructor: urlTemplate.replace('{timestamp}', timestamps[i])
+      });
+      tileSources.push(tileSource);
+  }
+  var animatedLayer = new Microsoft.Maps.AnimatedTileLayer({ mercator: tileSources, frameRate: 500 });
+  map.layers.insert(animatedLayer);
 }
