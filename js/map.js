@@ -14,7 +14,7 @@ function loadMapScenario() {
     }
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
-    $.when.(getRazorData()).then(console.log(assetPins.length));
+    $.when(getRazorData()).then(console.log(assetPins.length));
     for (i = 0; i < assetPins.length; i+=1) {
       map.entities.push(assetPins[i]);
       console.log("Pin");
