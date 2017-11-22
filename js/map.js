@@ -1,6 +1,7 @@
 var map;
 
 function loadMapScenario() {
+    // Coordinates will need to come from the field record in Dynamics
     var fieldGeo = [[46.65326757894689, -96.42025035713709],[46.652448813710876, -96.42023384116604],[46.65244575870562, -96.42093202940694],[46.653262927370356, -96.42127000481528]];
     var polyPoints = [];
     for (i = 0; i < fieldGeo.length; i++) {
@@ -21,6 +22,7 @@ function loadMapScenario() {
 function getRazorToken(){
   var baseUrl = 'https://razortracking.net'
   var request = {
+    // Will need to come from Dynamics solution settings
     "userName": '9990-admin',
     "password": '9990-admin'
   };
@@ -56,5 +58,43 @@ function getRazorToken(){
     }
   });
 };
+
+function getCurrentPosition(token) {
+  var request = {
+    "token": token,
+    //Can be multiple vehicle ids in an array
+    "vehicleIds": ['a3afb791-0239-401f-af76-b30c36e30230']
+  };
+  $.ajax({
+    url: baseUrl + '/Services/API/RazorTrackingApi.svc/GetCurrentPosition',
+    crossDomain: true,
+    type: 'POST',
+    contentType: "application/json;charset=utf-8",
+    traditional: true,
+    cache: false,
+    datatype: 'json',
+    data: JSON.stringify(request),
+    dataFilter: function(data) {
+      var unwrapped = eval('(' + data + ')');
+      if (unwrapped.hasOwnProperty('d'))
+        return unwrapped.d;
+      else
+        return unwrapped;
+    },
+    success: function(result) {
+      if (result.ErrorDetail) {
+        alert(result.ErrorDetail.toString());
+      }
+
+      for (var i = 0; i < result.length; i++) {
+        // $("#positionsList").append("[" + i + "]:" + JSON.stringify(result[i]) + "<br/>");
+        console.log(JSON.stringify(result[i]));
+      }
+    },
+    error: function(response) {
+      console.log(response);
+    }
+  });
+});
 
 var razor = getRazorToken();
