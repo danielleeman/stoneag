@@ -1,4 +1,5 @@
 var map;
+var baseUrl = 'https://razortracking.net'
 
 function loadMapScenario() {
     // Coordinates will need to come from the field record in Dynamics
@@ -20,7 +21,6 @@ function loadMapScenario() {
 }
 
 function getRazorToken(){
-  var baseUrl = 'https://razortracking.net'
   var request = {
     // Will need to come from Dynamics solution settings
     "userName": '9990-admin',
