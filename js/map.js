@@ -15,16 +15,17 @@ function loadMapScenario() {
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
     var razor = getRazorData();
-    var weather = loadWeather();
+
 
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
       zoom : 18
     });
 
+
     var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
     map.entities.push(pushpin);
-
+    var weather = loadWeather();
     map.entities.push(polygon);
 
 }
