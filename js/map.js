@@ -101,7 +101,7 @@ function getCurrentPosition(token) {
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
         var assetGeo = new Microsoft.Maps.Location(latitude,longitude);
-        var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { icon: '../img/tractor.png' });
+        var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { icon: 'img/tractor.png' });
         map.entities.push(assetPin);
         assetPins.push(assetPin);
       }
