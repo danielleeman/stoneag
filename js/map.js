@@ -47,7 +47,7 @@ function getRazorToken(){
       }
 
       var token = result.Token.toString();
-      console.log(token);
+      var currentPosition = getCurrentPosition(token);
 
       $("#status").text(result.AuthenticationStatus.toString());
       $("#token").text(result.Token.toString());
