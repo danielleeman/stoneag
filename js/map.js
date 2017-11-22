@@ -106,7 +106,8 @@ function getCurrentPosition(token) {
         console.log(JSON.stringify(result[i]));
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
-        var assetPin = new Microsoft.Maps.Pushpin((latitude, longitude), { color: 'red' });
+        var assetGeo = new Microsoft.Maps.Location(latitude,longitude);
+        var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { color: 'blue' });
         map.entities.push(assetPin);
         assetPins.push(assetPin);
       }
