@@ -89,7 +89,7 @@ function getCurrentPosition(token) {
       for (var i = 0; i < result.length; i++) {
         // $("#positionsList").append("[" + i + "]:" + JSON.stringify(result[i]) + "<br/>");
         console.log(JSON.stringify(result[i]));
-        console.log(JSON.stringify(result[i][currentLongitude]));
+        console.log(JSON.stringify(result[i]['CurrentLongitude']));
       }
     },
     error: function(response) {
