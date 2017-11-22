@@ -24,6 +24,11 @@ function loadMapScenario() {
       center : geoCenter.center,
       zoom : 15
     });
+
+    //Basic sample pin
+    var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+    map.entities.push(pushpin);
+
     map.entities.push(polygon);
 
     //Sample pin
