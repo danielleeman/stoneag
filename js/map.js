@@ -25,14 +25,15 @@ function loadMapScenario() {
       zoom : 15
     });
 
-    //Basic sample pin
+    //Basic sample pin <-this works
     var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
     map.entities.push(pushpin);
 
     map.entities.push(polygon);
 
     //Sample pin
-    var assetPin = new Microsoft.Maps.Pushpin((46.886933,-96.780458), { color: 'red' });
+    var assetGeo = new Microsoft.Maps.Location(46.886933,-96.780458);
+    var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { color: 'red' });
     map.entities.push(assetPin);
 
 
