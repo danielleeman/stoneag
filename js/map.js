@@ -15,10 +15,7 @@ function loadMapScenario() {
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
     var razor = getRazorData()
-    for (i = 0; i < assetPins.length; i+=1) {
-      map.entities.push(assetPins[i]);
-      console.log("Pin");
-    }
+
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
       zoom : 18
@@ -101,7 +98,6 @@ function getCurrentPosition(token) {
         var assetGeo = new Microsoft.Maps.Location(latitude,longitude);
         var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { icon: 'img/tractor32.png' });
         map.entities.push(assetPin);
-        assetPins.push(assetPin);
       }
     },
     error: function(response) {
