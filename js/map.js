@@ -31,12 +31,6 @@ function loadMapScenario() {
 
     map.entities.push(polygon);
 
-    //Sample pin
-    var assetGeo = new Microsoft.Maps.Location(46.886933,-96.780458);
-    var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { color: 'red' });
-    map.entities.push(assetPin);
-
-
 }
 
 function getRazorData(){
@@ -107,7 +101,7 @@ function getCurrentPosition(token) {
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
         var assetGeo = new Microsoft.Maps.Location(latitude,longitude);
-        var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { color: 'blue' });
+        var assetPin = new Microsoft.Maps.Pushpin(assetGeo, { icon: '../img/tractor.png' });
         map.entities.push(assetPin);
         assetPins.push(assetPin);
       }
