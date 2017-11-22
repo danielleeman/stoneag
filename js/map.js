@@ -5,7 +5,7 @@ function loadMapScenario() {
     // Coordinates will need to come from the field record in Dynamics
     var fieldGeo = [[46.65326757894689, -96.42025035713709],[46.652448813710876, -96.42023384116604],[46.65244575870562, -96.42093202940694],[46.653262927370356, -96.42127000481528]];
     var polyPoints = [];
-    for (i = 0; i < fieldGeo.length; i++) {
+    for (i = 0; i < fieldGeo.length; i+=1) {
       var latitude = fieldGeo[i][0];
       var longitude = fieldGeo[i][1];
       var polyPoint = new Microsoft.Maps.Location(latitude,longitude);
@@ -13,6 +13,11 @@ function loadMapScenario() {
     }
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
+    var assetPins = [];
+    for (i = 0; i < assetPins.length; i+=1) {
+      map.entities.push(assetPins[i]);
+    }
+
     var razor = getRazorData();
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
@@ -93,7 +98,7 @@ function getCurrentPosition(token) {
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
         var assetPin = new Microsoft.Maps.Pushpin((latitude, longitude), { color: 'red' });
-        map.entities.push(assetPin);
+        assetPins.push(assetPin);
       }
     },
     error: function(response) {
