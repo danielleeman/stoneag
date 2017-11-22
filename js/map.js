@@ -95,6 +95,6 @@ function getCurrentPosition(token) {
       console.log(response);
     }
   });
-});
+}
 
 var razor = getRazorToken();
