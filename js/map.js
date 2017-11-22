@@ -89,7 +89,10 @@ function getCurrentPosition(token) {
       for (var i = 0; i < result.length; i++) {
         // $("#positionsList").append("[" + i + "]:" + JSON.stringify(result[i]) + "<br/>");
         console.log(JSON.stringify(result[i]));
-        console.log(JSON.stringify(result[i]['CurrentLongitude']));
+        var latitude = result[i]['CurrentLatitude'];
+        var longitude = result[i]['CurrentLongitude'];
+        var assetPin = new Microsoft.Maps.Pushpin((latitude, longitude), { color: 'red' });
+        map.entities.push(assetPin);
       }
     },
     error: function(response) {
