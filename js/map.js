@@ -21,8 +21,8 @@ function loadMapScenario() {
 function getRazorToken(){
   var baseUrl = 'https://razortracking.net'
   var request = {
-    "userName": $("#userName").val(),
-    "password": $("#password").val()
+    "userName": '9990-admin',
+    "password": '9990-admin'
   };
   $.ajax({
     url: baseUrl + '/Services/API/RazorTrackingApi.svc/Authenticate',
