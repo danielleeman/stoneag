@@ -1,6 +1,5 @@
 var map;
 var baseUrl = 'https://razortracking.net'
-var assetPins = [];
 
 function loadMapScenario() {
     // Coordinates will need to come from the field record in Dynamics
@@ -22,7 +21,7 @@ function loadMapScenario() {
     }
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
-      zoom : 15
+      zoom : 18
     });
 
     //Basic sample pin <-this works
@@ -96,7 +95,6 @@ function getCurrentPosition(token) {
       }
 
       for (var i = 0; i < result.length; i++) {
-        // $("#positionsList").append("[" + i + "]:" + JSON.stringify(result[i]) + "<br/>");
         console.log(JSON.stringify(result[i]));
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
