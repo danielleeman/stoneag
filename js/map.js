@@ -13,6 +13,7 @@ function loadMapScenario() {
     }
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
+    var razor = getRazorData();
     map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
       center : geoCenter.center,
       zoom : 15
@@ -20,7 +21,7 @@ function loadMapScenario() {
     map.entities.push(polygon);
 }
 
-function getRazorToken(){
+function getRazorData(){
   var request = {
     // Will need to come from Dynamics solution settings
     "userName": '9990-admin',
@@ -100,5 +101,3 @@ function getCurrentPosition(token) {
     }
   });
 }
-
-var razor = getRazorToken();
