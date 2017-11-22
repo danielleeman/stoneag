@@ -14,7 +14,7 @@ function loadMapScenario() {
     }
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
-    $.when(getRazorData()).then(console.log(assetPins.length));
+    var razor = getRazorData()
     for (i = 0; i < assetPins.length; i+=1) {
       map.entities.push(assetPins[i]);
       console.log("Pin");
@@ -54,10 +54,6 @@ function getRazorData(){
 
       var token = result.Token.toString();
       var currentPosition = getCurrentPosition(token);
-
-      $("#status").text(result.AuthenticationStatus.toString());
-      $("#token").text(result.Token.toString());
-      $("#tokenInput, #locationTokenInput").val(result.Token.toString());
     },
     error: function(response) {
       console.log(response);
@@ -98,6 +94,7 @@ function getCurrentPosition(token) {
         var latitude = result[i]['CurrentLatitude'];
         var longitude = result[i]['CurrentLongitude'];
         var assetPin = new Microsoft.Maps.Pushpin((latitude, longitude), { color: 'red' });
+        map.entities.push(assetPin);
         assetPins.push(assetPin);
       }
     },
