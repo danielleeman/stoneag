@@ -12,6 +12,10 @@ function loadMapScenario() {
       var polyPoint = new Microsoft.Maps.Location(latitude,longitude);
       polyPoints.push(polyPoint);
     }
+    //Sample pin
+    var assetPin = new Microsoft.Maps.Pushpin((46.886933,-96.780458), { color: 'red' });
+    map.entities.push(assetPin);
+
     var polygon = new Microsoft.Maps.Polygon(polyPoints, null);
     var geoCenter = Microsoft.Maps.LocationRect.fromLocations(polyPoints);
     var razor = getRazorData()
