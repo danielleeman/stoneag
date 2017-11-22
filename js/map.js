@@ -19,6 +19,7 @@ function loadMapScenario() {
 }
 
 function getRazorToken(){
+  baseUrl = 'https://razortracking.net'
   var request = {
     "userName": $("#userName").val(),
     "password": $("#password").val()
